@@ -1,0 +1,42 @@
+.img-logo {
+    width: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.img-logo-amigas {
+    width: 210px;
+    margin-bottom: 10px;
+}
+
+.img-welcome{
+    width: 500px;
+}
+
+.img-footer {
+    width: 250px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.client-form {
+    margin-left: 15px;
+    width: 90%;
+}
+
+.reclamo-form {
+    margin-left: 20px;
+    width: 90%;
+}
+
+.text-area {
+    margin-left: 30px;
+}
+
+.select-form {
+    margin-left: 30px;
+}
+
+.radio-form {
+    margin-left: 30px;
+}

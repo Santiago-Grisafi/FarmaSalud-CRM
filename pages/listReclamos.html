@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmaSalud - Inicio</title>
+    <script src="./../js/jquery-3.6.4.js"></script>
+    <script src="./../js/bootstrap.js"></script>
+    <link rel="stylesheet" href="./../css/bootstrap.css">
+    <link rel="stylesheet" href="./../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./../node_modules/datatables.net-dt/css/jquery.dataTables.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="./../index.html"><img src="./../assets/farmasalud-icon.png"
+                class="img-logo">FarmaSalud
+            C.R.M</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./../index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa-solid fa-phone"></i> Listado de Reclamos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./altaReclamo.html"> <i class="fa-solid fa-calendar-days"></i>
+                        Gestión
+                        de Reclamos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1 class="mt-3 mb-3 text-center"><i class="fa-solid fa-table-list"></i> Listado de reclamos:</h1>
+    <div class="text-center mb-3">
+        <button type="button" class="btn btn-success btn-ver-modal-alta"><i class="fa-solid fa-download"></i> Añadir Reclamo</button>
+    </div>
+    <div class="border border-primary mb-5">
+        <table class="table dark-table text-center table-striped table-hover" id="table-reclamos" name="table-reclamos">
+            <thead>
+                <tr>
+                    <th colspan="6">#</th>
+                    <th colspan="6">Reclamo</th>
+                    <th colspan="6">Estado</th>
+                    <th colspan="6">Descripción</th>
+                    <th colspan="6">Prioridad</th>
+                    <th colspan="6">Cliente</th>
+                    <th colspan="6">Email</th>
+                    <th colspan="6"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="6">1</td>
+                    <td colspan="6">a</td>
+                    <td colspan="6">a</td>
+                    <td colspan="6">a</td>
+                    <td colspan="6">a</td>
+                    <td colspan="6">a</td>
+                    <td colspan="6">a</td>
+                    <td><button type="button" class="btn btn-success btn-ver-modal">Editar</button>
+                        <button type="button" class="btn btn-danger ml-3 btn-borrar">Eliminar</button>
+                    </td>
+                </tr>
+                <tr style="display: none;">
+                    <td colspan="6">2</td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td><button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="modalAta">Editar</button>
+                        &nbsp;
+                        <button type="button" class="btn btn-danger ml-3 btn-borrar">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal fade" id="modalDatos" tabindex="-1" role="dialog" aria-labelledby="modalDatos" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold"><i class="fa-solid fa-text-slash"></i> Actualizar
+                        Reclamo</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3 text-center">
+                    <div class="md-form">
+                        <form>
+                            <h5 class="mt-3"><i class="fa-solid fa-file-signature"></i> Datos del Reclamo:</h5>
+                            <div class="border border-info mb-3">
+                                <label for="descripcionReclamo" class="mt-3"><i class="fa fa-user prefix grey-text"></i>
+                                    Nombre del
+                                    reclamo:</label>
+                                <input type="text" id="descripcionReclamo" class="form-control reclamo-form"
+                                    style="resize: none;" required>
+                                <br>
+                                <i class="fas fa-user prefix grey-text"></i>
+                                <label for="descripcionReclamo">Descripcion del
+                                    reclamo:</label>
+                                <textarea type="text" id="descripcionReclamo" class="form-control reclamo-form"
+                                    style="resize: none;" cols="24" required></textarea>
+                                <div class="row mt-4">
+                                    <div class="col">
+                                        <label for="estadoReclamo">Estado del
+                                            reclamo:</label>
+                                        <select id="estadoReclamo" name="estadoReclamo">
+                                            <option value="activo">Activo</option>
+                                            <option value="inactivo">Inactivo</option>
+                                            <option value="incorrecto">Incorrecto</option>
+                                        </select>
+                                    </div>
+                                    <div class="col mb-3">
+                                        <label><b><i class="fa-solid fa-clipboard-list"></i> Prioridad:</b></label><br>
+                                        <label for="Baja"><b>Baja:</b></label>
+                                        <input type="radio" name="prioridad" value="Baja" id="prioridad">
+                                        <label for="Alta"><b>Alta:</b></label>
+                                        <input type="radio" name="prioridad" value="Alta" id="prioridad"><br>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <h5 class="mt-3"><i class="fa-solid fa-file-signature"></i> Datos del cliente:</h5>
+                    <div class="border border-success">
+                        <div class="row mt-4">
+                            <div class="col">
+                                <label data-error="wrong" data-success="right" for="nombre"><i
+                                        class="fa-solid fa-user"></i> Nombre del Cliente:</label>
+                                <input type="text" id="nombre" class="form-control validate client-form" required>
+                            </div>
+                            <div class="col">
+                                <label data-error="wrong" data-success="right" for="apellido"><i
+                                        class="fa-solid fa-signature"></i> Apellido del Cliente:</label>
+                                <input type="text" id="apellido" class="form-control validate client-form" required>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row mt-4 mb-2">
+                            <div class="col">
+                                <i class="fas fa-envelope prefix grey-text"></i>
+                                <label data-error="wrong" data-success="right" for="email">Email del Cliente:</label>
+                                <input type="email" id="email" class="form-control validate client-form" required>
+                            </div>
+                            <div class="col">
+                                <label data-error="wrong" data-success="right" for="confirmEmail"><i
+                                        class="fa fa-solid fa-file-check"></i> Confirmar Email:</label>
+                                <input type="email" id="confirmEmail" class="form-control validate client-form"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success mt-3" type="submit"><i class="fa fa-solid fa-check"></i> Actualizar
+                        Reclamo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="altaModalDatos" tabindex="-1" role="dialog" aria-labelledby="altaModalDatos"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold"><i class="fa-solid fa-download"></i> Dar de Alta
+                        Reclamo</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3 text-center">
+                    <div class="md-form">
+                        <form>
+                            <h5 class="mt-3"><i class="fa-solid fa-file-signature"></i> Datos del Reclamo:</h5>
+                            <div class="border border-info mb-3">
+                                <label for="descripcionReclamo" class="mt-3"><i class="fa fa-user prefix grey-text"></i>
+                                    Nombre del
+                                    reclamo:</label>
+                                <input type="text" id="descripcionReclamo" class="form-control reclamo-form"
+                                    style="resize: none;" required>
+                                <br>
+                                <i class="fas fa-user prefix grey-text"></i>
+                                <label for="descripcionReclamo">Descripcion del
+                                    reclamo:</label>
+                                <textarea type="text" id="descripcionReclamo" class="form-control reclamo-form"
+                                    style="resize: none;" cols="24" required></textarea>
+                                <div class="row mt-4">
+                                    <div class="col">
+                                        <label for="estadoReclamo">Estado del
+                                            reclamo:</label>
+                                        <select id="estadoReclamo" name="estadoReclamo">
+                                            <option value="activo">Activo</option>
+                                            <option value="inactivo">Inactivo</option>
+                                            <option value="incorrecto">Incorrecto</option>
+                                        </select>
+                                    </div>
+                                    <div class="col mb-3">
+                                        <label><b><i class="fa-solid fa-clipboard-list"></i> Prioridad:</b></label><br>
+                                        <label for="Baja"><b>Baja:</b></label>
+                                        <input type="radio" name="prioridad" value="Baja" id="prioridad">
+                                        <label for="Alta"><b>Alta:</b></label>
+                                        <input type="radio" name="prioridad" value="Alta" id="prioridad"><br>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <h5 class="mt-3"><i class="fa-solid fa-file-signature"></i> Datos del cliente:</h5>
+                    <div class="border border-success">
+                        <div class="row mt-4">
+                            <div class="col">
+                                <label data-error="wrong" data-success="right" for="nombre"><i
+                                        class="fa-solid fa-user"></i> Nombre del Cliente:</label>
+                                <input type="text" id="nombre" class="form-control validate client-form" required>
+                            </div>
+                            <div class="col">
+                                <label data-error="wrong" data-success="right" for="apellido"><i
+                                        class="fa-solid fa-signature"></i> Apellido del Cliente:</label>
+                                <input type="text" id="apellido" class="form-control validate client-form" required>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row mt-4 mb-2">
+                            <div class="col">
+                                <i class="fas fa-envelope prefix grey-text"></i>
+                                <label data-error="wrong" data-success="right" for="email">Email del Cliente:</label>
+                                <input type="email" id="email" class="form-control validate client-form" required>
+                            </div>
+                            <div class="col">
+                                <label data-error="wrong" data-success="right" for="confirmEmail"><i
+                                        class="fa fa-solid fa-file-check"></i> Confirmar Email:</label>
+                                <input type="email" id="confirmEmail" class="form-control validate client-form"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success mt-3" type="submit"><i class="fa fa-solid fa-check"></i> Dar de Alta
+                        Reclamo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="text-center mb-3">
+        <button class="btn btn-info text-white" style="size: 50px;"><i class="fa-solid fa-print" onclick="printData()">
+            </i> Imprimir PDF</button>
+    </div>
+
+    <footer class="bg-dark text-center text-lg-start text-white">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col text-center">
+                    <h5 class="text-uppercase"><i class="fa-solid fa-star"></i> Web Amigas:</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="https://www.farmaciasponte.com/"><img src="./../assets/Ponte Farmacias.png"
+                                    class="img-logo-amigas"></a>
+                        </li>
+                        <li>
+                            <a href="https://farmaciaspasteris.com.ar/"><img src="./../assets/Pasteris.png"
+                                    class="img-logo-amigas"></a>
+                        </li>
+                        <li>
+                            <a href="https://www.grupograssi.com/" class="text-dark"><img
+                                    src="./../assets/Farmacias Grassi.png" class="img-logo-amigas"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col text-center">
+                    <h5 class="text-uppercase"><i class="fa-solid fa-user"></i> Nosotros:</h5>
+                    <img src="./../assets/farmasalud.png" class="img-footer rounded">
+                    <p>
+                        Farmasalud, es una empresa farmacéutica que brinda la venta libre de servicios y productos
+                        de salud, belleza e higiene a la sociedad desde los años 50, siempre manteniendo una
+                        amplia fidelidad con sus clientes.
+                    </p>
+                </div>
+                <div class="col text-center">
+                    <h5 class="text-uppercase mb-0"><i class="fa-solid fa-circle-info"></i> Contacto:</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="text-white mt-5"><i class="fa fa-duotone fa-house"></i> Rio Tercero, Córdoba,
+                                Argentina</p>
+                        </li>
+                        <li>
+                            <p class="text-white mt-3"><i class="fa fa-duotone fa-phone"></i> (+54) 3571 609526</p>
+                        </li>
+                        <li>
+                            <a class="text-white mt-3" href="mailto:sngrisa@gmail.com"><i
+                                    class="fa fa-solid fa-envelope"></i>
+                                sngrisa@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright SiG Software. Todos los derechos reservados
+        </div>
+    </footer>
+    <script src="./../js/bootbox.all.js"></script>
+    <script src="./../node_modules/datatables.net-dt/js/dataTables.dataTables.js"></script>
+    <script src="./../js/abmReclamos.js"></script>
+    <script src="./../js/printReclamos.js"></script>
+</body>
+
+</html>
